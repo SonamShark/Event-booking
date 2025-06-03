@@ -20,22 +20,8 @@ const events = [
     price: 150,
     capacity: 1000,
     available: 2750,
-    image: "/BFF.jpeg?height=80&width=200",
+    image: "/BFF.jpeg?height=80px&width=80px",
   },
-  // {
-  //   id: 2,
-  //   title: "Music Festival",
-  //   description: "Three-day music festival with international artists",
-  //   date: "2024-04-20",
-  //   time: "06:00 PM",
-  //   location: "Desert Park, Abu Dhabi",
-  //   price: 199,
-  //   capacity: 2000,
-  //   available: 800,
-  //   image: "/placeholder.svg?height=200&width=200",
-  // },
-  
-  
 ]
 
 type BookingStep = "events" | "verification" | "form" | "credential"
@@ -95,56 +81,58 @@ export default function EventBooking() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Event Ticket Booking</h1>
           <p className="text-xl text-gray-600">Discover and book tickets for amazing events</p>
         </div>
-{/* md:grid-cols-2 lg:grid-cols-2 mx-auto */}
-        <div className="grid grid-cols-1 gap-6 max-w-4xl  ">
-          {events.map((event) => (
-            <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gray-200 relative">
-                <img src={event.image || "/placeholder.svg"} alt={event.title} className="w-full h-full object-cover" />
-                <Badge className="absolute top-4 right-4 bg-green-500">{event.available} tickets left</Badge>
-              </div>
 
-              <CardHeader>
-                <CardTitle className="text-xl">{event.title}</CardTitle>
-                <CardDescription>{event.description}</CardDescription>
-              </CardHeader>
-
-              <CardContent className="space-y-3">
-                <div className="flex items-center text-sm text-gray-600">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {new Date(event.date).toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 gap-6 max-w-4xl w-full">
+            {events.map((event) => (
+              <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="aspect-video bg-gray-200 relative">
+                  <img src={event.image || "/placeholder.svg"} alt={event.title} className="w-full h-full object-cover" />
+                  <Badge className="absolute top-4 right-4 bg-green-500">{event.available} tickets left</Badge>
                 </div>
 
-                <div className="flex items-center text-sm text-gray-600">
-                  <Clock className="w-4 h-4 mr-2" />
-                  {event.time}
-                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{event.title}</CardTitle>
+                  <CardDescription>{event.description}</CardDescription>
+                </CardHeader>
 
-                <div className="flex items-center text-sm text-gray-600">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  {event.location}
-                </div>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {new Date(event.date).toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </div>
 
-                <div className="flex items-center text-sm text-gray-600">
-                  <Users className="w-4 h-4 mr-2" />
-                  {event.capacity} total capacity
-                </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Clock className="w-4 h-4 mr-2" />
+                    {event.time}
+                  </div>
 
-                <div className="text-2xl font-bold text-blue-600">${event.price}</div>
-              </CardContent>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    {event.location}
+                  </div>
 
-              <CardFooter>
-                <Button className="w-full" onClick={() => handleBookTicket(event)} disabled={event.available === 0}>
-                  {event.available === 0 ? "Sold Out" : "Book Ticket"}
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Users className="w-4 h-4 mr-2" />
+                    {event.capacity} total capacity
+                  </div>
+
+                  <div className="text-2xl font-bold text-blue-600">${event.price}</div>
+                </CardContent>
+
+                <CardFooter>
+                  <Button className="w-full" onClick={() => handleBookTicket(event)} disabled={event.available === 0}>
+                    {event.available === 0 ? "Sold Out" : "Book Ticket"}
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>

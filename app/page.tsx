@@ -20,7 +20,7 @@ const events = [
     price: 150,
     capacity: 1000,
     available: 2750,
-    image: "/BFF.jpeg?height=80px&width=80px",
+    image: "/Bhutan_FF_logo.svg",
   },
 ]
 
@@ -83,11 +83,15 @@ export default function EventBooking() {
         </div>
 
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 gap-6 max-w-4xl w-full">
+          <div className="grid grid-cols-1 gap-6 max-w-md w-full">
             {events.map((event) => (
               <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gray-200 relative">
-                  <img src={event.image || "/placeholder.svg"} alt={event.title} className="w-full h-full object-cover" />
+                <div className="relative h-48 w-full bg-gray-100 flex items-center justify-center p-4">
+                    <img 
+                      src={event.image} 
+                      alt={event.title}
+                      className="max-h-full max-w-full object-contain"
+                    />
                   <Badge className="absolute top-4 right-4 bg-green-500">{event.available} tickets left</Badge>
                 </div>
 
@@ -134,6 +138,7 @@ export default function EventBooking() {
             ))}
           </div>
         </div>
+
       </div>
     </div>
   )

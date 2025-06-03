@@ -22,6 +22,18 @@ const events = [
     available: 2750,
     image: "/Bhutan_FF_logo.svg",
   },
+  {
+    id: 2,  // Make sure this ID is unique
+    title: "Bhutan Festival of Happiness (Coming Soon)",
+    description: "Coming Soon",
+    date: "01-01-2018",
+    time: "Coming Soon",
+    location: "Coming Soon",
+    price: 200,
+    capacity: 1500,
+    available: 1120,
+    image: "/Festival-icon.svg",  // Add your image path
+  }
 ]
 
 type BookingStep = "events" | "verification" | "form" | "credential"
@@ -83,9 +95,9 @@ export default function EventBooking() {
         </div>
 
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 gap-6 max-w-md w-full">
-            {events.map((event) => (
-              <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl w-full">
+              {events.map((event) => (
+                <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative h-48 w-full bg-gray-100 flex items-center justify-center p-4">
                     <img 
                       src={event.image} 
@@ -126,7 +138,7 @@ export default function EventBooking() {
                     {event.capacity} total capacity
                   </div>
 
-                  <div className="text-2xl font-bold text-blue-600">${event.price}</div>
+                  <div className="text-2xl font-bold text-blue-600">Nu {event.price}</div>
                 </CardContent>
 
                 <CardFooter>

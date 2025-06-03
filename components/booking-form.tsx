@@ -296,7 +296,7 @@ export default function BookingForm({ event, onSubmit, onBack }: BookingFormProp
                 {new Date(event.date).toLocaleDateString()} at {event.time}
               </p>
               <p className="text-sm text-blue-600">{event.location}</p>
-              <p className="font-semibold text-blue-900 mt-2">Price: ${event.price}</p>
+              <p className="font-semibold text-blue-900 mt-2">Price: Nu. {event.price}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -363,37 +363,6 @@ export default function BookingForm({ event, onSubmit, onBack }: BookingFormProp
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-semibold flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  Emergency Contact
-                </h4> 
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
-                  <div>
-                    <Label htmlFor="emergencyContact">Emergency Contact Name *</Label>
-                    <Input
-                      id="emergencyContact"
-                      value={formData.emergencyContact}
-                      onChange={(e) => handleInputChange("emergencyContact", e.target.value)}
-                      placeholder="Contact person name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="emergencyPhone">Emergency Contact Phone *</Label>
-                    <Input
-                      id="emergencyPhone"
-                      value={formData.emergencyPhone}
-                      onChange={(e) => handleInputChange("emergencyPhone", e.target.value)}
-                      placeholder="+971 50 123 4567"
-                      required
-                    />
-                  </div> 
-                </div>
-              </div>
-
               {/* Booking Details section */}
               <div className="space-y-4">
                 <h4 className="font-semibold flex items-center gap-2">
@@ -425,22 +394,12 @@ export default function BookingForm({ event, onSubmit, onBack }: BookingFormProp
                     <div className="text-right">
                       <p className="text-sm text-gray-600">Total Amount</p>
                       <p className="text-2xl font-bold text-blue-600">
-                        ${event.price * Number.parseInt(formData.ticketQuantity)}
+                        Nu. {event.price * Number.parseInt(formData.ticketQuantity)}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div>
-                  <Label htmlFor="specialRequirements">Special Requirements (Optional)</Label>
-                  <Textarea
-                    id="specialRequirements"
-                    value={formData.specialRequirements}
-                    onChange={(e) => handleInputChange("specialRequirements", e.target.value)}
-                    placeholder="Any special requirements or accessibility needs..."
-                    rows={3}
-                  />
-                </div>
               </div>
 
               <Button type="submit" className="w-full" size="lg" disabled={!isFormValid}>

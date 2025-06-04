@@ -243,15 +243,21 @@ interface BookingFormProps {
   event: any
   onSubmit: (data: any) => void
   onBack: () => void
+  nationalIdData: {
+    fullName: string
+    gender: string
+    dataOfBirth: string
+    nationality: string
+  }
 }
 
-export default function BookingForm({ event, onSubmit, onBack }: BookingFormProps) {
+export default function BookingForm({ event, onSubmit, onBack, nationalIdData }: BookingFormProps) {
   const [formData, setFormData] = useState({
     // Pre-filled from National ID (simulated)
-    fullName: "Sonam",
-    nationalId: "784-1990-1234567-8",
-    dateOfBirth: "1990-05-15",
-    nationality: "UAE",
+    fullName: nationalIdData.fullName,
+    nationalId: nationalIdData.gender,
+    dateOfBirth: nationalIdData.dataOfBirth,
+    nationality: nationalIdData.nationality,
     // User needs to fill these
     email: "",
     phone: "",

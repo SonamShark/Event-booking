@@ -20,7 +20,7 @@ const events = [
     price: 150,
     capacity: 1000,
     available: 2750,
-    image: "/BFF.jpeg?height=80&width=200",
+    image: "/BFF.svg?height=80&width=40",
   },
   // {
   //   id: 2,

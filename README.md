@@ -44,16 +44,21 @@ This is a web-based ticket booking platform that integrates **Self-Sovereign Ide
 ## 🧩 System Architecture
 
 [Frontend: Next.js]
+
     ↓
 Display QR (OOB invitation)
+
     ↓
 [User scans with wallet]
+
     ↓
 [Wallet responds with credentials]
+
     ↓
 [Backend: Aries Agent (AFJ)]
     → Creates Proof Request
     → Polls for Status
     → Extracts Attributes
+    
     ↓
 Frontend displays verified data + grants ticket
